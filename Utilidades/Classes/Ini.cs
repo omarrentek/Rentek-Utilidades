@@ -13,6 +13,7 @@ namespace Utilidades.Classes
 
         private static clsProyectos frmProyectos;
         private static clsBaseMaestra frmBaseMaestra;
+        private static clsSN frmSN;
 
         private Ini()
         {
@@ -162,6 +163,80 @@ namespace Utilidades.Classes
                                         break;
                                     }
                                     break;
+                            }
+                            break;
+                        case "134":
+                            Form _Form = null;
+                            switch (pVal.EventType)
+                            {
+                                case BoEventTypes.et_FORM_LOAD:
+                                    if (frmSN == null)
+                                    {
+                                        frmSN = new clsSN(oApp, oCompany);
+                                    }
+                                    frmSN.AddControls(pVal);
+                                    break;
+                                case BoEventTypes.et_ITEM_PRESSED:
+                                    switch (pVal.ItemUID)
+                                    {
+                                        case "FldFctOrd":
+                                            _Form = (Form)oApp.Forms.Item(pVal.FormUID);
+                                            _Form.PaneLevel = 30;
+                                            break;
+                                    }
+                                    
+                                    break;
+                                case BoEventTypes.et_CLICK:
+                                    switch (pVal.ItemUID)
+                                    {
+                                        case "RqFact":
+                                            if (frmSN == null)
+                                            {
+                                                frmSN = new clsSN(oApp, oCompany);
+                                            }
+                                            frmSN.EnableFields(pVal, "RqFact");
+                                            break;
+                                        case "DocAdic":
+                                            if (frmSN == null)
+                                            {
+                                                frmSN = new clsSN(oApp, oCompany);
+                                            }
+                                            frmSN.EnableFields(pVal, "DocAdic");
+                                            break;
+                                        case "PrcdRecp":
+                                            if (frmSN == null)
+                                            {
+                                                frmSN = new clsSN(oApp, oCompany);
+                                            }
+                                            frmSN.EnableFields(pVal, "PrcdRecp");
+                                            break;
+                                        case "BtnImp":
+                                            if (frmSN == null)
+                                            {
+                                                frmSN = new clsSN(oApp, oCompany);
+                                            }
+                                            frmSN.Print(pVal);
+                                            break;
+                                    }
+                                    break;
+                                case BoEventTypes.et_COMBO_SELECT:
+                                    switch (pVal.ItemUID)
+                                    {
+                                        case "SlOrFac":
+                                            if (frmSN == null)
+                                            {
+                                                frmSN = new clsSN(oApp, oCompany);
+                                            }
+                                            frmSN.EnableFields(pVal, "SlOrFac");
+
+                                            break;
+                                    }
+
+                                    break;
+                            }
+                            if(_Form != null)
+                            {
+                                System.Runtime.InteropServices.Marshal.ReleaseComObject(_Form);
                             }
                             break;
                         
