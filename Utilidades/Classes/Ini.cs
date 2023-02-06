@@ -98,7 +98,7 @@ namespace Utilidades.Classes
                 {
                     switch (pVal.FormTypeEx)
                     {
-                        case"711":
+                        case "711":
                             switch (pVal.EventType)
                             {
                                 case BoEventTypes.et_FORM_LOAD:
@@ -159,7 +159,7 @@ namespace Utilidades.Classes
                                             {
                                                 System.Runtime.InteropServices.Marshal.ReleaseComObject(MatrizReal);
                                             }
-                                        }                                        
+                                        }
                                         break;
                                     }
                                     break;
@@ -184,7 +184,7 @@ namespace Utilidades.Classes
                                             _Form.PaneLevel = 30;
                                             break;
                                     }
-                                    
+
                                     break;
                                 case BoEventTypes.et_CLICK:
                                     switch (pVal.ItemUID)
@@ -234,15 +234,17 @@ namespace Utilidades.Classes
 
                                     break;
                             }
-                            if(_Form != null)
+                            if (_Form != null)
                             {
                                 System.Runtime.InteropServices.Marshal.ReleaseComObject(_Form);
                             }
                             break;
-                        
+                      
+
                     }
 
                 }
+                
 
             }
             catch (Exception ex)

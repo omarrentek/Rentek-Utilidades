@@ -319,7 +319,7 @@ namespace Utilidades.Classes
                 oRefItem = oForm.Items.Item("DtsEnc");
                 oItem = oForm.Items.Add("DtsRqrm", BoFormItemTypes.it_STATIC);
                 oItem.Top = oRefItem.Top;
-                oItem.Left = oRefItem.Left + 300;
+                oItem.Left = oRefItem.Left + 250;
                 oItem.Width = oRefItem.Width + 70;
                 oItem.Height = oRefItem.Height;
                 oItem.FromPane = oRefItem.FromPane;
