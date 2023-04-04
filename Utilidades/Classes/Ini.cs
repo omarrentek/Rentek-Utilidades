@@ -33,7 +33,7 @@ namespace Utilidades.Classes
                 oGuiApi = new SboGuiApi();
                 oGuiApi.Connect(Connectionstr);
                 oApp = oGuiApi.GetApplication();
-                oApp.SetStatusBarMessage("Estamos conectando el add-On " + asm.GetName().Name + " por favor espere unos segundos.",BoMessageTime.bmt_Short,false);
+                oApp.SetStatusBarMessage("Estamos conectando el add-On " + asm.GetName().Name + " por favor espere unos segundos.", BoMessageTime.bmt_Short, false);
                 oCompany = (SAPbobsCOM.Company)oApp.Company.GetDICompany();
             }
             else
@@ -79,14 +79,15 @@ namespace Utilidades.Classes
             try
             {
                 _ = new Ini();
-                oApp.SetStatusBarMessage("Add-On " + asm.GetName().Name + " conectado exitosamente",BoMessageTime.bmt_Short,false);
+                oApp.SetStatusBarMessage("Add-On " + asm.GetName().Name + " conectado exitosamente", BoMessageTime.bmt_Short, false);
                 return true;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show("Execpción al conectar add-On Rentek utilidades, \n" + ex.Message + "\n" + ex.StackTrace);
                 return false;
             }
-           
+
         }
 
         private void SBO_Application_ItemEvent(string FormUID, ref ItemEvent pVal, out bool BubbleEvent)
@@ -121,6 +122,7 @@ namespace Utilidades.Classes
                                     break;
                             }
                             break;
+
                         case "UDO_FT_RNTK_MASTERB":
                             switch (pVal.EventType)
                             {
@@ -183,6 +185,10 @@ namespace Utilidades.Classes
                                             _Form = (Form)oApp.Forms.Item(pVal.FormUID);
                                             _Form.PaneLevel = 30;
                                             break;
+                                        case "FldInfCom":
+                                            _Form = (Form)oApp.Forms.Item(pVal.FormUID);
+                                            _Form.PaneLevel = 31;
+                                            break;
                                     }
 
                                     break;
@@ -239,12 +245,12 @@ namespace Utilidades.Classes
                                 System.Runtime.InteropServices.Marshal.ReleaseComObject(_Form);
                             }
                             break;
-                      
+
 
                     }
 
                 }
-                
+
 
             }
             catch (Exception ex)
@@ -295,6 +301,6 @@ namespace Utilidades.Classes
 
             }
         }
-    
+
     }
 }

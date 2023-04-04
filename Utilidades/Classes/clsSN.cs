@@ -796,6 +796,310 @@ namespace Utilidades.Classes
                 oButton = (Button)oItem.Specific;
                 oButton.Caption = "Imprimir";
 
+
+                /*******************  Datos comercial **************************/
+
+                oRefItem = oForm.Items.Item("9");
+                oItem = oForm.Items.Add("FldInfCom", BoFormItemTypes.it_FOLDER);
+                oItem.Top = oRefItem.Top;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.AffectsFormMode = false;
+                oItem.Enabled = true;
+                oItem.LinkTo = "9";
+                oItem.AffectsFormMode = false;
+                oFolder = (SAPbouiCOM.Folder)oItem.Specific;
+                oFolder.Caption = " Información financiera ";
+                oFolder.DataBind.SetBound(true, "", "FldUDS1");
+                oFolder.GroupWith("9");
+
+
+                oRefItem = oForm.Items.Item("78");
+                oItem = oForm.Items.Add("LbsSect", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top;
+                oItem.Left = oRefItem.Left + 20;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "78";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Sector (NAICS)";
+
+                oRefItem = oForm.Items.Item("75");
+                oItem = oForm.Items.Add("EdSctr", BoFormItemTypes.it_EXTEDIT);
+                oItem.Top = oRefItem.Top;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width + 50;
+                oItem.Height = oRefItem.Height + 200;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbsSect";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_NAICS");
+                
+                /***************************** total ingresos ***********************************/
+                oRefItem = oForm.Items.Item("LbsSect");
+                oItem = oForm.Items.Add("LbTIng", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top ;
+                oItem.Left = oRefItem.Left + 350;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbsSect";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Total Ingreso Operativo";
+
+                oRefItem = oForm.Items.Item("EdSctr");
+                oItem = oForm.Items.Add("EdTIng", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top;
+                oItem.Left = oRefItem.Left + 360;
+                oItem.Width = oRefItem.Width - 50;
+                oItem.Height = oRefItem.Height - 200;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbTIng";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_Tingr");
+
+
+
+                oRefItem = oForm.Items.Item("LbTIng");
+                oItem = oForm.Items.Add("LbFcInc", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbTIng";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Fecha de Incorporación";
+
+                oRefItem = oForm.Items.Item("EdTIng");
+                oItem = oForm.Items.Add("EdFcInc", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbFcInc";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_FchInc");
+
+
+                oRefItem = oForm.Items.Item("LbFcInc");
+                oItem = oForm.Items.Add("LbNmEmp", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbFcInc";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Número de empleados";
+
+                oRefItem = oForm.Items.Item("EdFcInc");
+                oItem = oForm.Items.Add("EdNmEmp", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbNmEmp";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_NmEmp");
+              
+
+                oRefItem = oForm.Items.Item("LbNmEmp");
+                oItem = oForm.Items.Add("LbGnNt", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbNmEmp";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Ganancia (Pérdida) Neta";
+
+                oRefItem = oForm.Items.Item("EdNmEmp");
+                oItem = oForm.Items.Add("EdGnNt", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbGnNt";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_Gnet");
+
+
+                oRefItem = oForm.Items.Item("LbGnNt");
+                oItem = oForm.Items.Add("LbAcTt", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbGnNt";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Activos Totales";
+
+                oRefItem = oForm.Items.Item("EdGnNt");
+                oItem = oForm.Items.Add("EdAcTt", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbAcTt";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_ActTt");
+
+                oRefItem = oForm.Items.Item("LbAcTt");
+                oItem = oForm.Items.Add("LbTtPat", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbAcTt";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Total de patrimonio";
+
+                oRefItem = oForm.Items.Item("EdAcTt");
+                oItem = oForm.Items.Add("EdTtPat", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbTtPat";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_TtPrt");
+
+                oRefItem = oForm.Items.Item("LbTtPat");
+                oItem = oForm.Items.Add("LbPsTt", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbTtPat";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Pasivos Totales";
+
+                oRefItem = oForm.Items.Item("EdTtPat");
+                oItem = oForm.Items.Add("EdPsTt", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbPsTt";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_PsTt");
+
+                oRefItem = oForm.Items.Item("LbPsTt");
+                oItem = oForm.Items.Add("LbGnOp", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbPsTt";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Ganancia operativa (EBIT)";
+
+                oRefItem = oForm.Items.Item("EdPsTt");
+                oItem = oForm.Items.Add("EdGnOp", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbGnOp";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_GnOpr");
+
+                oRefItem = oForm.Items.Item("LbGnOp");
+                oItem = oForm.Items.Add("LbAFis", BoFormItemTypes.it_STATIC);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.Enabled = true;
+                oItem.LinkTo = "LbGnOp";
+                oItem.AffectsFormMode = false;
+                oLabel = (StaticText)oItem.Specific;
+                oLabel.Caption = "Año Fiscal";
+
+                oRefItem = oForm.Items.Item("EdGnOp");
+                oItem = oForm.Items.Add("EdAFis", BoFormItemTypes.it_EDIT);
+                oItem.Top = oRefItem.Top + 15;
+                oItem.Left = oRefItem.Left;
+                oItem.Width = oRefItem.Width;
+                oItem.Height = oRefItem.Height;
+                oItem.Enabled = true;
+                oItem.FromPane = 31;
+                oItem.ToPane = 31;
+                oItem.LinkTo = "LbAFis";
+                oItem.AffectsFormMode = true;
+                oEditText = (EditText)oItem.Specific;
+                oEditText.DataBind.SetBound(true, "OCRD", "U_RTK_Afis");
             }
             //catch (Exception ex)
             //{
