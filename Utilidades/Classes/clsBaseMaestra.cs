@@ -26,7 +26,7 @@ namespace Utilidades.Classes
             {
                 //subtipoReal = (Column)matrizReal.Columns.Item("C_3_3");
                 //subtipoReal.DisplayDesc = true;
-                combosubtipoReal = (ComboBox)matrizReal.Columns.Item("C_3_3").Cells.Item(pVal.Row).Specific;
+                combosubtipoReal = (ComboBox)matrizReal.Columns.Item("C_3_9").Cells.Item(pVal.Row).Specific;
                 //combosubtipoReal.Item.DisplayDesc = true;
 
                 formBaseMaestra.Freeze(true);
