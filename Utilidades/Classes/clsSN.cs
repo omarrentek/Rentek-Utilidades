@@ -32,6 +32,22 @@ namespace Utilidades.Classes
             {
                 oForm = (Form)oApp.Forms.Item(pVal.FormUID);
 
+                /*Boton para ir a CRM alquiler*/
+                oRefItem = oForm.Items.Item("148");
+                oItem = oForm.Items.Add("BtnIrCRM", BoFormItemTypes.it_BUTTON);
+                oItem.Top = oRefItem.Top ;
+                oItem.Left = oRefItem.Left - 100;
+                oItem.Width = oRefItem.Width - 50;
+                oItem.Height = oRefItem.Height + 2;
+                oItem.FromPane = oRefItem.FromPane;
+                oItem.ToPane = oRefItem.ToPane;
+                oItem.LinkTo = "148";
+                oItem.Enabled = true;
+                oItem.AffectsFormMode = false;
+                oButton = (Button)oItem.Specific;
+                oButton.Caption = "Ir CRM Alquiler";
+
+
                 oForm.DataSources.UserDataSources.Add("FldUDS1", BoDataType.dt_SHORT_TEXT, 10);
 
 
@@ -1145,6 +1161,21 @@ namespace Utilidades.Classes
                 }
             }
 
+        }
+
+        internal void IrCRM(ItemEvent pVal)
+        {
+            try
+            {
+                //oApp.OpenForm(BoFormObjectEnum.fo_UserDefinedObject, "CRM_ALQUILER");
+                oApp.Menus.Item("47630").Activate();
+
+            }
+            catch(Exception ex) 
+            {
+                oApp.MessageBox("Error Ir a Crm alquiler: " + ex.ToString() + "\n" + ex.StackTrace.ToString());
+            }
+           
         }
 
         internal void Print(ItemEvent pVal)

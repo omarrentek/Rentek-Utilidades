@@ -223,6 +223,13 @@ namespace Utilidades.Classes
                                             }
                                             frmSN.Print(pVal);
                                             break;
+                                        case "BtnIrCRM":
+                                            if (frmSN == null)
+                                            {
+                                                frmSN = new clsSN(oApp, oCompany);
+                                            }
+                                            frmSN.IrCRM(pVal);
+                                            break;
                                     }
                                     break;
                                 case BoEventTypes.et_COMBO_SELECT:
